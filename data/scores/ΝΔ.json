@@ -1,0 +1,185 @@
+{
+    "party_name": "ΝΔ",
+    "scores": [
+        {
+            "id": 1,
+            "statement": "Το κράτος πρέπει να παρεμβαίνει στην ελεύθερη αγορά για να ελέγχει τις τιμές των βασικών αγαθών (π.χ. πλαφόν στα σούπερ μάρκετ).",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto discusses controlling inflation generally and strengthening the economy through other means, but not direct price controls or caps on basic goods."
+        },
+        {
+            "id": 2,
+            "statement": "Η ιδιωτικοποίηση στρατηγικών υποδομών, όπως η ενέργεια (ΔΕΗ) και η διαχείριση υδάτων (ΕΥΔΑΠ), βοηθάει στην ανάπτυξη της χώρας.",
+            "score": 50,
+            "justification": "Not mentioned in the text. While the manifesto promotes investments and economic development, there is no explicit mention or stance on the privatization of strategic infrastructure like energy (ΔΕΗ) or water management (ΕΥΔΑΠ)."
+        },
+        {
+            "id": 3,
+            "statement": "Πρέπει να υπάρχει πλήρης προστασία της πρώτης κατοικίας από πλειστηριασμούς, ανεξαρτήτως του ύψους του χρέους του οφειλέτη.",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto supports the protection of the first residence for vulnerable borrowers: «Μείωση του ιδιωτικού χρέους και στήριξη ευάλωτων δανειοληπτών με προστασία της πρώτης κατοικίας.» (A5). However, it specifies 'ευάλωτους δανειολήπτες' and does not state 'ανεξαρτήτως του ύψους του χρέους'."
+        },
+        {
+            "id": 4,
+            "statement": "Η θέσπιση \"τεκμαρτού εισοδήματος\" για τους ελεύθερους επαγγελματίες είναι ένα δίκαιο μέτρο για την πάταξη της φοροδιαφυγής.",
+            "score": 25,
+            "justification": "Tend to disagree. The manifesto mentions tackling tax evasion through digital checks and electronic transactions, and states: «Αναπροσαρμογή και εξορθολογισμός συστήματος τεκμηρίων (μείωση τεκμηρίων διαβίωσης κατά περίπου 30% μεσοσταθμικά) από 1/1/2025». This indicates a move to *reduce* existing presumptive expenses, rather than advocating for new 'τεκμαρτό εισόδημα' as a fair measure."
+        },
+        {
+            "id": 5,
+            "statement": "Πρέπει να καταργηθεί άμεσα ο ΕΝΦΙΑ για όλα τα χαμηλά και μεσαία εισοδήματα.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto outlines various tax reductions (τέλος επιτηδεύματος, ασφαλιστικές εισφορές, αφορολόγητο, ΦΠΑ) but does not mention ENFIA."
+        },
+        {
+            "id": 6,
+            "statement": "Πρέπει να σταματήσει εντελώς το πρόγραμμα χορήγησης Golden Visa, καθώς αυξάνει ανεξέλεγκτα τα ενοίκια και το κόστος στέγασης.",
+            "score": 50,
+            "justification": "Not mentioned in the text. While the manifesto shows concern for housing affordability and offers 'προσιτή Στέγη στους νέους' and 'προσιτά ρυθμιζόμενα ενοίκια' (B4), there is no mention of the Golden Visa program."
+        },
+        {
+            "id": 7,
+            "statement": "Η εργατική νομοθεσία πρέπει να δίνει απόλυτη ευελιξία στο ωράριο (π.χ. διευθέτηση χρόνου, ευέλικτες συμβάσεις) για να τονωθεί η απασχόληση.",
+            "score": 25,
+            "justification": "Tend to disagree. The manifesto emphasizes strict adherence to labor laws and control over working hours: «Εφαρμογή ψηφιακής κάρτας εργασίας σε όλες τις επιχειρήσεις ανεξαρτήτως κλάδου ή μεγέθους. Διενέργεια αυστηρών ελέγχων από την επιθεώρηση εργασίας για την απαρέγκλιτη τήρηση της εργατικής νομοθεσίας.» (A6). This focus on regulation is contrary to 'απόλυτη ευελιξία'."
+        },
+        {
+            "id": 8,
+            "statement": "Η Εκκλησία και το Κράτος πρέπει να διαχωριστούν πλήρως, πολιτικά και οικονομικά.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 9,
+            "statement": "Τα ομόφυλα ζευγάρια πρέπει να έχουν το δικαίωμα πολιτικού γάμου και τεκνοθεσίας (υιοθεσίας).",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto explicitly states 'Μελλοντικός στόχος η θεσμοθέτηση του γάμου για ομόφυλα ζευγάρια' and mentions 'Υλοποίηση της Εθνικής Στρατηγικής για την Ισότητα των ΛΟΑΤΚΙ+' (D3). While civil marriage is explicitly stated as a goal, the right to adoption is not explicitly mentioned but is generally encompassed in such equality strategies."
+        },
+        {
+            "id": 10,
+            "statement": "Πρέπει να επιτρέπεται ελεύθερα η ίδρυση και λειτουργία Μη Κρατικών (Ιδιωτικών) Πανεπιστημίων στην Ελλάδα.",
+            "score": 100,
+            "justification": "Completely agree. The manifesto explicitly states the intention to: «Εκκίνηση της διαδικασίας για μία γενναία Συνταγματική Αναθεώρηση που θα απελευθερώσει κοινωνικές δυνάμεις και θα εκσυγχρονίσει αναχρονιστικές διατάξεις (π.χ. άρθρο 16 για λειτουργία μη κρατικών ΑΕΙ).» (D2)."
+        },
+        {
+            "id": 11,
+            "statement": "Η χρήση των λεγόμενων «μαλακών ναρκωτικών» (π.χ. κάνναβη) πρέπει να αποποινικοποιηθεί πλήρως.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 12,
+            "statement": "Πρέπει να εφαρμοστεί αυστηρά η Πανεπιστημιακή Αστυνομία (ΟΠΠΙ) για να σταματήσουν οι καταλήψεις και οι φθορές στα ΑΕΙ.",
+            "score": 100,
+            "justification": "Completely agree. The manifesto clearly states the intention to create a campus security force: «Δημιουργία ομάδων προστασίας εντός των πανεπιστημίων με αποτρεπτικό χαρακτήρα. ... δημιουργία Ομάδας Προστασίας Πανεπιστημιακών Ιδρυμάτων.» (ΠΟΛΙΤΙΚΗ ΔΕΣΜΕΥΣΗ (2023))."
+        },
+        {
+            "id": 13,
+            "statement": "Πρέπει να θεσπιστούν αυστηρότεροι νομικοί περιορισμοί στο δικαίωμα των πορειών, των απεργιών και των συναθροίσεων στο κέντρο των πόλεων.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto discusses general security and combating crime but does not propose specific legal restrictions on the right to protests, strikes, or assemblies."
+        },
+        {
+            "id": 14,
+            "statement": "Είναι απαραίτητη η αναμόρφωση του Ποινικού Κώδικα με αυστηρότερες ποινές και πραγματική έκτιση (χωρίς αναστολή) για τα σοβαρά εγκλήματα.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto refers to 'Επιτάχυνση χρόνου απονομής δικαιοσύνης' and 'Ψηφιακή Στρατηγική για τη Δικαιοσύνη' (D1) and improving prison facilities, but not stricter penal codes or actual serving of sentences without suspension."
+        },
+        {
+            "id": 15,
+            "statement": "Η Συμφωνία των Πρεσπών (για τη Βόρεια Μακεδονία) ήταν επωφελής για τα εθνικά μας συμφέροντα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 16,
+            "statement": "Η Ελλάδα πρέπει να συνάπτει τεράστια εξοπλιστικά προγράμματα (π.χ. Rafale, Belharra), ακόμα κι αν αυτό σημαίνει λιγότερα χρήματα για το κοινωνικό κράτος.",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto strongly commits to extensive armament programs, explicitly naming specific procurements: «Η Ελλάδα αποκτά 24 αεροσκάφη τύπου Rafale, 3 (+1) φρεγάτες Belharra, αναβαθμίζει 83 αεροσκάφη F-16 στην κορυφαία έκδοση Viper. Βρίσκονται σε εξέλιξη 19 προγράμματα ύψους 11,5 δις ευρώ για την προμήθεια αεροσκαφών F-35...» (E3). However, it does not explicitly state that this would lead to less money for social programs."
+        },
+        {
+            "id": 17,
+            "statement": "Η Ελλάδα πρέπει να παρέχει ενεργή στρατιωτική βοήθεια (αποστολή οπλισμού) στην Ουκρανία.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto discusses Greece's role in EU security and international peace (E1), but does not specifically address military aid to Ukraine."
+        },
+        {
+            "id": 18,
+            "statement": "Πρέπει να εμβαθύνουμε τις αμυντικές συμφωνίες μας με τις ΗΠΑ (π.χ. επέκταση στρατιωτικών βάσεων).",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto emphasizes strengthening national defense but does not refer to specific defense agreements with the US or the expansion of military bases."
+        },
+        {
+            "id": 19,
+            "statement": "Η Ελλάδα πρέπει να αποχωρήσει από το ΝΑΤΟ, καθώς η συμμαχία δεν εξυπηρετεί τα εθνικά της συμφέροντα.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto does not mention NATO at all, nor any intention to withdraw from it."
+        },
+        {
+            "id": 20,
+            "statement": "Η Επιστολική Ψήφος και η πλήρης άρση περιορισμών για την ψήφο των αποδήμων είναι απαραίτητα βήματα εκδημοκρατισμού.",
+            "score": 100,
+            "justification": "Completely agree. The manifesto explicitly supports both measures: «Κατάργηση περιορισμών για εγγραφή στους εκλογικούς καταλόγους εξωτερικού. Εισαγωγή επιστολικής ψήφου εντός και εκτός Ελλάδας.» (E1)."
+        },
+        {
+            "id": 21,
+            "statement": "Η επιλογή των διοικητών στα νοσοκομεία και τους δημόσιους φορείς πρέπει να γίνεται αυστηρά μέσω του ΑΣΕΠ και όχι με πολιτικό διορισμό.",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto advocates for improving the selection method for public body administrations with 'αυστηρά προαπαιτούμενα προσόντα' (D2) and for lower-level supervisors, 'Ανασχεδιασμός συστήματος επιλογής προϊσταμένων με ηλεκτρονικό τρόπο υπό την εποπτεία του ΑΣΕΠ.' (D2). This indicates a strong shift towards meritocracy and ASEP involvement, but it does not explicitly state that all high-level administrators will be chosen 'αυστηρά μέσω του ΑΣΕΠ'."
+        },
+        {
+            "id": 22,
+            "statement": "Η λειτουργία της ΕΥΠ και οι τηλεφωνικές παρακολουθήσεις γίνονται συχνά με αδιαφανή κριτήρια που παραβιάζουν το κράτος δικαίου.",
+            "score": 50,
+            "justification": "Not mentioned in the text. While the manifesto promotes 'Ενίσχυση Λογοδοσίας και διασφάλιση της Διαφάνειας στο Δημόσιο' (D2), there is no specific mention of EYP or telephone surveillance."
+        },
+        {
+            "id": 23,
+            "statement": "Οι γιατροί του Δημοσίου συστήματος υγείας (ΕΣΥ) πρέπει να έχουν το δικαίωμα να διατηρούν ταυτόχρονα και ιδιωτικό ιατρείο.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto focuses on strengthening the public health system and increasing doctors' salaries within it, but does not address the right to maintain a private practice."
+        },
+        {
+            "id": 24,
+            "statement": "Τα παιδιά των μεταναστών που γεννιούνται και μεγαλώνουν στην Ελλάδα, πρέπει να αποκτούν αυτόματα την Ελληνική Ιθαγένεια.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto addresses migration control, repatriation, and the social integration of unaccompanied minors into the workforce, but not automatic citizenship."
+        },
+        {
+            "id": 25,
+            "statement": "Πρέπει να επεκταθεί ο φράχτης στον Έβρο σε όλο το μήκος των συνόρων για την αποτροπή των παράνομων μεταναστών.",
+            "score": 100,
+            "justification": "Completely agree. The manifesto explicitly states: «Ολοκλήρωση μέχρι το τέλος του 2025 της επέκτασης του Φράχτη του Έβρου.» (E4)."
+        },
+        {
+            "id": 26,
+            "statement": "Το κράτος πρέπει να απαγορεύσει αυστηρά την εκτός σχεδίου δόμηση, ακόμα κι αν αυτό μηδενίσει την αξία της περιουσίας των μικροϊδιοκτητών.",
+            "score": 50,
+            "justification": "Not mentioned in the text. The manifesto emphasizes securing private property and simplifying permits for investment (A4) but does not address off-plan construction or its potential prohibition."
+        },
+        {
+            "id": 27,
+            "statement": "Πρέπει να σταματήσει αμέσως κάθε έρευνα και εξόρυξη υδρογονανθράκων στην ελληνική επικράτεια για λόγους προστασίας του περιβάλλοντος.",
+            "score": 0,
+            "justification": "Completely disagree. The manifesto explicitly supports the opposite: «Προώθηση έρευνας κοιτασμάτων φυσικού αερίου. Κατασκευή νέων σταθμών εισαγωγής LNG, αναβάθμιση Συστήματος Μεταφοράς φυσικού αερίου, διεθνείς διασυνδέσεις φυσικού αερίου.» (Γ2)."
+        },
+        {
+            "id": 28,
+            "statement": "Είναι αναγκαίο να κλείσουν γρήγορα τα λιγνιτικά εργοστάσια (απολιγνιτοποίηση) για την άμεση προστασία του κλίματος.",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto commits to a rapid shift towards renewables: «Μέσα σε 6 χρόνια το 80% της ηλεκτροπαραγωγής προέρχεται από ανανεώσιμες πηγές ενέργειας.» (Γ2). This strongly implies the phasing out of fossil fuels like lignite, aligning with the goal of climate protection, even if the term 'απολιγνιτοποίηση' is not explicitly used."
+        },
+        {
+            "id": 29,
+            "statement": "Είναι απαραίτητο να αλλάξουν οι προστατευόμενες ζώνες NATURA για να διευκολυνθούν οι μεγάλες τουριστικές και ενεργειακές επενδύσεις.",
+            "score": 50,
+            "justification": "Not mentioned in the text. While the manifesto promotes sustainable tourism and green energy investments, it makes no reference to changing NATURA protected areas."
+        },
+        {
+            "id": 30,
+            "statement": "Το κράτος πρέπει να απαγορεύσει σταδιακά την πώληση νέων οχημάτων με κινητήρες εσωτερικής καύσης υπέρ των ηλεκτρικών.",
+            "score": 75,
+            "justification": "Tend to agree. The manifesto promotes electric vehicles and infrastructure: «Το 20% των ΙΧ οχημάτων είναι μηδενικών ή χαμηλών ρύπων έως το 2027. Τίθενται σε λειτουργία 8.900 δημόσια προσβάσιμοι φορτιστές σε κοινόχρηστους χώρους αστικών κέντρων.» (Γ2). This shows a strong push towards electric vehicles, but it does not explicitly state that the state should *prohibit* the sale of new internal combustion engine vehicles."
+        }
+    ]
+}

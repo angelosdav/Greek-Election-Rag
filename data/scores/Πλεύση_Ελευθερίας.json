@@ -1,0 +1,185 @@
+{
+    "party_name": "Πλεύση_Ελευθερίας",
+    "scores": [
+        {
+            "id": 1,
+            "statement": "Το κράτος πρέπει να παρεμβαίνει στην ελεύθερη αγορά για να ελέγχει τις τιμές των βασικών αγαθών (π.χ. πλαφόν στα σούπερ μάρκετ).",
+            "score": 75,
+            "justification": "The party advocates for a \"socially-centered economic model\" where the economy serves people, not the other way around, and seeks to ensure an \"adequate guaranteed income\" that covers basic living costs. This suggests a willingness for state intervention to control costs of basic goods. \"η οικονομία υπηρετεί τον άνθρωπο και όχι το αντίστροφο\" and \"Ελάχιστος Εγγυημένος Μισθός (Κοινωνική Βάση Εισοδήματος) ... που καλύπτει το κόστος αξιοπρεπούς διαβίωσης (τροφή, στέγαση, ενέργεια, μετακίνηση).\""
+        },
+        {
+            "id": 2,
+            "statement": "Η ιδιωτικοποίηση στρατηγικών υποδομών, όπως η ενέργεια (ΔΕΗ) και η διαχείριση υδάτων (ΕΥΔΑΠ), βοηθάει στην ανάπτυξη της χώρας.",
+            "score": 0,
+            "justification": "The manifesto explicitly states that the MoU's call \"for greater privatization which is contrary to economic self-determination and without a serious plan risks dissipating and under-selling profitable businesses and creating more joblessness.\" \"Το Μνημόνιο απαιτεί περισσότερες ιδιωτικοποιήσεις, πράγμα που αντιτίθεται προς την οικονομική αυτοδιάθεση\""
+        },
+        {
+            "id": 3,
+            "statement": "Πρέπει να υπάρχει πλήρης προστασία της πρώτης κατοικίας από πλειστηριασμούς, ανεξαρτήτως του ύψους του χρέους του οφειλέτη.",
+            "score": 75,
+            "justification": "The party criticizes measures that \"ease attachment and seizure processes in favor of tax authorities and banks\" and emphasizes providing \"interest-free or low-interest loans for... acquisition or repair of housing,\" indicating a strong stance against property seizures and for housing protection. \"Διευκολύνουν τη διαδικασία κατασχέσεων, υπέρ των φορολογικών αρχών και των τραπεζών\" and \"Παροχή άτοκων ή χαμηλότοκων δανείων για: ... Απόκτηση ή επισκευή κατοικίας\""
+        },
+        {
+            "id": 4,
+            "statement": "Η θέσπιση \"τεκμαρτού εισοδήματος\" για τους ελεύθερους επαγγελματίες είναι ένα δίκαιο μέτρο για την πάταξη της φοροδιαφυγής.",
+            "score": 0,
+            "justification": "The party criticizes the \"increase the advance corporate income tax... even for the self-employed... thus further reducing available income\" and the idea of \"φορολογούν κάθε παιδί ως τεκμήριο!\" (taxing every child as a presumption!), implying opposition to presumptive taxation. \"Αυξάνουν την προκαταβολή φόρου εισοδήματος ... ακόμη και για τους αυτοαπασχολούμενους, ... μειώνοντας περαιτέρω το διαθέσιμο εισόδημα.\""
+        },
+        {
+            "id": 5,
+            "statement": "Πρέπει να καταργηθεί άμεσα ο ΕΝΦΙΑ για όλα τα χαμηλά και μεσαία εισοδήματα.",
+            "score": 50,
+            "justification": "The text mentions property tax rates in the context of the MoU but does not explicitly state a position on the abolition of ENFIA for low and middle incomes. Not mentioned in the text."
+        },
+        {
+            "id": 6,
+            "statement": "Πρέπει να σταματήσει εντελώς το πρόγραμμα χορήγησης Golden Visa, καθώς αυξάνει ανεξέλεγκτα τα ενοίκια και το κόστος στέγασης.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 7,
+            "statement": "Η εργατική νομοθεσία πρέπει να δίνει απόλυτη ευελιξία στο ωράριο (π.χ. διευθέτηση χρόνου, ευέλικτες συμβάσεις) για να τονωθεί η απασχόληση.",
+            "score": 0,
+            "justification": "The party explicitly states that \"the additional flexibility of labor relations... will result to even lower wages and increase in unemployment\" and proposes a \"fixed working schedule – end to overwork: 8-hour daily and 40-hour weekly as general limit.\" \"Η περαιτέρω ευελιξία των εργασιακών σχέσεων… θα έχει ως αποτέλεσμα χαμηλούς μισθούς, αύξηση της ανεργίας\""
+        },
+        {
+            "id": 8,
+            "statement": "Η Εκκλησία και το Κράτος πρέπει να διαχωριστούν πλήρως, πολιτικά και οικονομικά.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 9,
+            "statement": "Τα ομόφυλα ζευγάρια πρέπει να έχουν το δικαίωμα πολιτικού γάμου και τεκνοθεσίας (υιοθεσίας).",
+            "score": 75,
+            "justification": "The party advocates for a \"Code of Sexual Neutrality for all workplaces, prohibiting any evaluation, promotion or dismissal based on sexual identity or expression,\" which indicates a broader progressive stance on LGBTQ+ rights, though it does not explicitly mention civil marriage or adoption. \"Θέσπιση Κώδικα Σεξουαλικής Ουδετερότητας για όλους τους εργασιακούς χώρους, που απαγορεύει οποιαδήποτε αξιολόγηση, προαγωγή ή απόλυση με βάση τη σεξουαλική ταυτότητα ή έκφραση.\""
+        },
+        {
+            "id": 10,
+            "statement": "Πρέπει να επιτρέπεται ελεύθερα η ίδρυση και λειτουργία Μη Κρατικών (Ιδιωτικών) Πανεπιστημίων στην Ελλάδα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 11,
+            "statement": "Η χρήση των λεγόμενων «μαλακών ναρκωτικών» (π.χ. κάνναβη) πρέπει να αποποινικοποιηθεί πλήρως.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 12,
+            "statement": "Πρέπει να εφαρμοστεί αυστηρά η Πανεπιστημιακή Αστυνομία (ΟΠΠΙ) για να σταματήσουν οι καταλήψεις και οι φθορές στα ΑΕΙ.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 13,
+            "statement": "Πρέπει να θεσπιστούν αυστηρότεροι νομικοί περιορισμοί στο δικαίωμα των πορειών, των απεργιών και των συναθροίσεων στο κέντρο των πόλεων.",
+            "score": 0,
+            "justification": "The party explicitly criticizes \"negative impact on working class rights, including the revision of the framework of collective bargaining and wage setting, industrial action and collective dismissals\" and advocates for strengthening workers' collective rights, implying opposition to stricter restrictions on protests and strikes. \"Πολύ αρνητικές επιπτώσεις στα δικαιώματα της εργατικής τάξης θα έχει η αναθεώρηση του πλαισίου των συλλογικών διαπραγματεύσεων για τον καθορισμό των μισθών, τη συλλογική δράση και τις ομαδικές απολύσεις.\""
+        },
+        {
+            "id": 14,
+            "statement": "Είναι απαραίτητη η αναμόρφωση του Ποινικού Κώδικα με αυστηρότερες ποινές και πραγματική έκτιση (χωρίς αναστολή) για τα σοβαρά εγκλήματα.",
+            "score": 75,
+            "justification": "The party proposes \"Application of penalties including imprisonment for cases of bribery, data leakage or cover-up of cases\" in specific contexts and calls for \"Immediate dismissal of corrupt officials\", indicating a general stance in favor of strict penalties and accountability for serious offenses. \"Εφαρµογή ποινών έως και κάθειρξης για περιπτώσεις χρηµατισµού, διαρροής δεδοµένων ή συγκάλυψης υποθέσεων.\" and \"ΑΜΕΣΗ ΑΠΟΤΑΞΗ ΕΠΙΟΡΚΩΝ\""
+        },
+        {
+            "id": 15,
+            "statement": "Η Συμφωνία των Πρεσπών (για τη Βόρεια Μακεδονία) ήταν επωφελής για τα εθνικά μας συμφέροντα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 16,
+            "statement": "Η Ελλάδα πρέπει να συνάπτει τεράστια εξοπλιστικά προγράμματα (π.χ. Rafale, Belharra), ακόμα κι αν αυτό σημαίνει λιγότερα χρήματα για το κοινωνικό κράτος.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 17,
+            "statement": "Η Ελλάδα πρέπει να παρέχει ενεργή στρατιωτική βοήθεια (αποστολή οπλισμού) στην Ουκρανία.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 18,
+            "statement": "Πρέπει να εμβαθύνουμε τις αμυντικές συμφωνίες μας με τις ΗΠΑ (π.χ. επέκταση στρατιωτικών βάσεων).",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 19,
+            "statement": "Η Ελλάδα πρέπει να αποχωρήσει από το ΝΑΤΟ, καθώς η συμμαχία δεν εξυπηρετεί τα εθνικά της συμφέροντα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 20,
+            "statement": "Η Επιστολική Ψήφος και η πλήρης άρση περιορισμών για την ψήφο των αποδήμων είναι απαραίτητα βήματα εκδημοκρατισμού.",
+            "score": 50,
+            "justification": "The text strongly emphasizes the binding nature of referendums and popular vote, but does not explicitly mention a stance on postal voting or lifting restrictions for diaspora voting as steps towards democratization. Not mentioned in the text."
+        },
+        {
+            "id": 21,
+            "statement": "Η επιλογή των διοικητών στα νοσοκομεία και τους δημόσιους φορείς πρέπει να γίνεται αυστηρά μέσω του ΑΣΕΠ και όχι με πολιτικό διορισμό.",
+            "score": 100,
+            "justification": "The party advocates for \"Meritocracy in administration and operation\" and proposes that members of independent bodies be appointed \"by an increased majority from the Standing Committee on Cultural Affairs of the Parliament, following a public call for interest\" with strict incompatibility rules, strongly indicating a preference for non-political, merit-based appointments for public sector leadership. \"Αξιοκρατία στη διοίκηση και στη λειτουργία.\" and \"Τα µέλη της ΑΕΠΑ θα διορίζονται µε αυξηµένη πλειοψηφία από τη Διαρκή Επιτροπή Μορφωτικών Υποθέσεων της Βουλής, κατόπιν δηµόσιας πρόσκλησης ενδιαφέροντος.\""
+        },
+        {
+            "id": 22,
+            "statement": "Η λειτουργία της ΕΥΠ και οι τηλεφωνικές παρακολουθήσεις γίνονται συχνά με αδιαφανή κριτήρια που παραβιάζουν το κράτος δικαίου.",
+            "score": 100,
+            "justification": "The party strongly advocates for \"Transparency / Clarity at all stages, sectors, actions and activities\" and criticizes violations of the \"rule of law\". It also proposes \"the right to disconnect (not to be monitored outside working hours)\" and \"prohibition of automated surveillance in workplaces,\" strongly implying that opaque surveillance violates its principles. \"Διαφάνεια / Διαύγεια σε όλα τα στάδια, τους τομείς, τις ενέργειες και τις δράσεις.\" and \"Το δικαίωμα αποσύνδεσης (να μην εργάζεται ή παρακολουθείται εκτός ωραρίου).\""
+        },
+        {
+            "id": 23,
+            "statement": "Οι γιατροί του Δημοσίου συστήματος υγείας (ΕΣΥ) πρέπει να έχουν το δικαίωμα να διατηρούν ταυτόχρονα και ιδιωτικό ιατρείο.",
+            "score": 50,
+            "justification": "The text focuses on universal access to public healthcare and criticizes user fees, but does not mention the right of public doctors to maintain private practices. Not mentioned in the text."
+        },
+        {
+            "id": 24,
+            "statement": "Τα παιδιά των μεταναστών που γεννιούνται και μεγαλώνουν στην Ελλάδα, πρέπει να αποκτούν αυτόματα την Ελληνική Ιθαγένεια.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 25,
+            "statement": "Πρέπει να επεκταθεί ο φράχτης στον Έβρο σε όλο το μήκος των συνόρων για την αποτροπή των παράνομων μεταναστών.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 26,
+            "statement": "Το κράτος πρέπει να απαγορεύσει αυστηρά την εκτός σχεδίου δόμηση, ακόμα κι αν αυτό μηδενίσει την αξία της περιουσίας των μικροϊδιοκτητών.",
+            "score": 75,
+            "justification": "The party advocates for \"Absolute protection of reforested areas\" and \"full implementation of the Property Fire Protection Regulation, especially in settlements surrounded by forests,\" indicating a strong stance against unchecked construction in environmentally sensitive areas, prioritizing protection over property value. \"ΑΠΟΛΥΤΗ ΠΡΟΣΤΑΣΙΑ ΑΝΑΔΑΣΩΤΕΩΝ ΕΚΤΑΣΕΩΝ\" and \"πλήρης εφαρμογή του Κανονισμού Πυροπροστασίας Ακινήτων και ειδικά σε οικισμούς που περιβάλλονται από δάση και δασικές εκτάσεις.\""
+        },
+        {
+            "id": 27,
+            "statement": "Πρέπει να σταματήσει αμέσως κάθε έρευνα και εξόρυξη υδρογονανθράκων στην ελληνική επικράτεια για λόγους προστασίας του περιβάλλοντος.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 28,
+            "statement": "Είναι αναγκαίο να κλείσουν γρήγορα τα λιγνιτικά εργοστάσια (απολιγνιτοποίηση) για την άμεση προστασία του κλίματος.",
+            "score": 50,
+            "justification": "The text mentions \"climate change\" as a factor in forest fires, indicating environmental awareness, but does not explicitly state a position on the rapid closure of lignite power plants. Not mentioned in the text."
+        },
+        {
+            "id": 29,
+            "statement": "Είναι απαραίτητο να αλλάξουν οι προστατευόμενες ζώνες NATURA για να διευκολυνθούν οι μεγάλες τουριστικές και ενεργειακές επενδύσεις.",
+            "score": 0,
+            "justification": "The party strongly advocates for \"absolute protection of reforested areas\" and emphasizes environmental and forest protection, implying opposition to changes in protected zones for investment purposes. \"ΑΠΟΛΥΤΗ ΠΡΟΣΤΑΣΙΑ ΑΝΑΔΑΣΩΤΕΩΝ ΕΚΤΑΣΕΩΝ, ΟΠΩΣ ΠΕΡΙΓΡΑΦΕΤΑΙ ΚΑΙ ΣΤΟ ΠΡΟΓΡΑΜΜΑ ΜΑΣ ΓΙΑ ΤΟ ΠΕΡΙΒΑΛΛΟΝ ΚΑΙ ΤΑ ΔΑΣΗ\""
+        },
+        {
+            "id": 30,
+            "statement": "Το κράτος πρέπει να απαγορεύσει σταδιακά την πώληση νέων οχημάτων με κινητήρες εσωτερικής καύσης υπέρ των ηλεκτρικών.",
+            "score": 50,
+            "justification": "The text supports \"green technologies\" in the context of training, but does not explicitly state a position on gradually banning the sale of new internal combustion engine vehicles. Not mentioned in the text."
+        }
+    ]
+}

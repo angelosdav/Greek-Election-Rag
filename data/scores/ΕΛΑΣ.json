@@ -1,0 +1,185 @@
+{
+    "party_name": "ΕΛΑΣ",
+    "scores": [
+        {
+            "id": 1,
+            "statement": "Το κράτος πρέπει να παρεμβαίνει στην ελεύθερη αγορά για να ελέγχει τις τιμές των βασικών αγαθών (π.χ. πλαφόν στα σούπερ μάρκετ).",
+            "score": 100,
+            "justification": "The party explicitly states it will legislate for price control, tax super-profits, and set profit and price caps in key sectors. \"Θεσπίζουμε πλαφόν στην κερδοφορία εταιριών κλάδων που παρουσιάζουν συστηματικά υπερκέρδη\" και \"Θέσπιση ανώτατου ορίου τιμής στη λιανική για την ηλεκτρική ενέργεια ανά μεγαβατώρα. Επιβολή διατίμησης στη λιανική φυσικού αερίου\"."
+        },
+        {
+            "id": 2,
+            "statement": "Η ιδιωτικοποίηση στρατηγικών υποδομών, όπως η ενέργεια (ΔΕΗ) και η διαχείριση υδάτων (ΕΥΔΑΠ), βοηθάει στην ανάπτυξη της χώρας.",
+            "score": 0,
+            "justification": "The party explicitly states its intention to reverse privatizations and regain public control over strategic infrastructure like electricity and water. \"Ανακτούμε το δημόσιο έλεγχο στη ΔΕΗ\" και \"Επαναφέρουμε τις μετοχές των ΕΥΔΑΠ-ΕΥΑΘ στο Δημόσιο\"."
+        },
+        {
+            "id": 3,
+            "statement": "Πρέπει να υπάρχει πλήρης προστασία της πρώτης κατοικίας από πλειστηριασμούς, ανεξαρτήτως του ύψους του χρέους του οφειλέτη.",
+            "score": 75,
+            "justification": "The party commits to general and permanent protection of primary residence from foreclosures, though an initial mention of a 300,000 euro limit exists, the broader policy statement does not include it. \"Προστασία από ρευστοποίηση της πρώτης κατοικίας, της επαγγελματικής στέγης και της αγροτικής γης\"."
+        },
+        {
+            "id": 4,
+            "statement": "Η θέσπιση \"τεκμαρτού εισοδήματος\" για τους ελεύθερους επαγγελματίες είναι ένα δίκαιο μέτρο για την πάταξη της φοροδιαφυγής.",
+            "score": 50,
+            "justification": "The concept of \"τεκμαρτό εισόδημα\" for freelancers is not mentioned in the text. The party proposes different tax measures for this group, such as a tax-free threshold and abolition of the professional fee."
+        },
+        {
+            "id": 5,
+            "statement": "Πρέπει να καταργηθεί άμεσα ο ΕΝΦΙΑ για όλα τα χαμηλά και μεσαία εισοδήματα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 6,
+            "statement": "Πρέπει να σταματήσει εντελώς το πρόγραμμα χορήγησης Golden Visa, καθώς αυξάνει ανεξέλεγκτα τα ενοίκια και το κόστος στέγασης.",
+            "score": 50,
+            "justification": "The text addresses housing costs and short-term rentals (Airbnb) but does not mention the Golden Visa program."
+        },
+        {
+            "id": 7,
+            "statement": "Η εργατική νομοθεσία πρέπει να δίνει απόλυτη ευελιξία στο ωράριο (π.χ. διευθέτηση χρόνου, ευέλικτες συμβάσεις) για να τονωθεί η απασχόληση.",
+            "score": 0,
+            "justification": "The party explicitly advocates for the abolition of \"anti-labor regulations\" (like the Hadjidakis Law), the re-establishment of the 8-hour workday, and collective bargaining, indicating a strong opposition to \"absolute flexibility\" in working hours. \"Κατάργηση των νόμων Χατζηδάκη, που νομιμοποίησαν τα 12ωρα, την απλήρωτη εργασία\" και \"Επαναφορά των ρυθμίσεων (...) για το οκτάωρο\"."
+        },
+        {
+            "id": 8,
+            "statement": "Η Εκκλησία και το Κράτος πρέπει να διαχωριστούν πλήρως, πολιτικά και οικονομικά.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 9,
+            "statement": "Τα ομόφυλα ζευγάρια πρέπει να έχουν το δικαίωμα πολιτικού γάμου και τεκνοθεσίας (υιοθεσίας).",
+            "score": 75,
+            "justification": "The party explicitly supports the legal recognition of marriage for all persons, regardless of sexual orientation, which indicates strong support for LGBTQ+ rights. However, adoption rights are not explicitly mentioned. \"Νομική κατοχύρωση του γάμου για όλα τα πρόσωπα, ανεξάρτητα από τον σεξουαλικό προσανατολισμό\"."
+        },
+        {
+            "id": 10,
+            "statement": "Πρέπει να επιτρέπεται ελεύθερα η ίδρυση και λειτουργία Μη Κρατικών (Ιδιωτικών) Πανεπιστημίων στην Ελλάδα.",
+            "score": 0,
+            "justification": "The party explicitly opposes policies that would \"push young people to private colleges\" by supporting public higher education and abolishing the minimum admission base. \"Κατάργηση των αντιεκπαιδευτικών νόμων, συμπεριλαμβανομένης της Ελάχιστης Βάσης Εισαγωγής, που είχε στόχο να συρρικνώσει τα περιφερειακά πανεπιστήμια για να ωθήσει τους νέους στα ιδιωτικά κολέγια\"."
+        },
+        {
+            "id": 11,
+            "statement": "Η χρήση των λεγόμενων «μαλακών ναρκωτικών» (π.χ. κάνναβη) πρέπει να αποποινικοποιηθεί πλήρως.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 12,
+            "statement": "Πρέπει να εφαρμοστεί αυστηρά η Πανεπιστημιακή Αστυνομία (ΟΠΠΙ) για να σταματήσουν οι καταλήψεις και οι φθορές στα ΑΕΙ.",
+            "score": 0,
+            "justification": "The party explicitly states its intention to abolish university police. \"Καταργούμε την πανεπιστημιακή αστυνομία\"."
+        },
+        {
+            "id": 13,
+            "statement": "Πρέπει να θεσπιστούν αυστηρότεροι νομικοί περιορισμοί στο δικαίωμα των πορειών, των απεργιών και των συναθροίσεων στο κέντρο των πόλεων.",
+            "score": 0,
+            "justification": "The party explicitly calls for the abolition of laws that \"criminalized social protest\" and \"undermined the constitutional right to assemble,\" directly opposing stricter restrictions on demonstrations and strikes. \"Να καταργήσει το ν.4703/2020, «Δημόσιες υπαίθριες συναθροίσεις και άλλες διατάξεις», που επανέφερε τον περιορισμό στις δημόσιες συναθροίσεις και ποινικοποίησε την κοινωνική διαμαρτυρία, υπονομεύοντας το συνταγματικό δικαίωμα του συνέρχεσθαι\"."
+        },
+        {
+            "id": 14,
+            "statement": "Είναι απαραίτητη η αναμόρφωση του Ποινικού Κώδικα με αυστηρότερες ποινές και πραγματική έκτιση (χωρίς αναστολή) για τα σοβαρά εγκλήματα.",
+            "score": 50,
+            "justification": "The text mentions reforming the police and the justice system to effectively combat crime, but it does not specifically address the reform of the Penal Code with stricter penalties or the actual serving of sentences without suspension."
+        },
+        {
+            "id": 15,
+            "statement": "Η Συμφωνία των Πρεσπών (για τη Βόρεια Μακεδονία) ήταν επωφελής για τα εθνικά μας συμφέροντα.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 16,
+            "statement": "Η Ελλάδα πρέπει να συνάπτει τεράστια εξοπλιστικά προγράμματα (π.χ. Rafale, Belharra), ακόμα κι αν αυτό σημαίνει λιγότερα χρήματα για το κοινωνικό κράτος.",
+            "score": 25,
+            "justification": "While the party mentions strengthening the domestic defense industry and parliamentary oversight on defense procurements, there is no mention of pursuing \"massive armaments programs\" or prioritizing them over social spending. The overall emphasis on the social state suggests a different priority. \"Αναβάθμιση του ελεγκτικού ρόλου του Κοινοβουλίου, σε σχέση με τις προμήθειες για την Άμυνα\"."
+        },
+        {
+            "id": 17,
+            "statement": "Η Ελλάδα πρέπει να παρέχει ενεργή στρατιωτική βοήθεια (αποστολή οπλισμού) στην Ουκρανία.",
+            "score": 25,
+            "justification": "The party states that the participation of the Greek Armed Forces abroad should be limited \"only in operations of international organizations of which Greece is a member,\" and advocates for an EU defense policy \"strategically autonomous from NATO and the USA\" with a \"permanent goal of peace.\" This implies a reluctance towards unilateral military aid. \"Συμμετοχή των ΕΔ στο εξωτερικό, μόνο σε επιχειρήσεις διεθνών οργανισμών στους οποίους είναι μέλος η Ελλάδα\"."
+        },
+        {
+            "id": 18,
+            "statement": "Πρέπει να εμβαθύνουμε τις αμυντικές συμφωνίες μας με τις ΗΠΑ (π.χ. επέκταση στρατιωτικών βάσεων).",
+            "score": 0,
+            "justification": "The party explicitly states that the EU's defense policy should be \"strategically autonomous from NATO and the USA,\" which implies opposition to deepening defense agreements with the US. \"Η αμυντική πολιτική της ΕΕ οφείλει να είναι στρατηγικά αυτόνομη από το ΝΑΤΟ και τις ΗΠΑ\"."
+        },
+        {
+            "id": 19,
+            "statement": "Η Ελλάδα πρέπει να αποχωρήσει από το ΝΑΤΟ, καθώς η συμμαχία δεν εξυπηρετεί τα εθνικά της συμφέρεοντα.",
+            "score": 25,
+            "justification": "The party calls for an EU defense policy to be \"strategically autonomous from NATO and the USA,\" indicating a critical stance towards the alliance, but does not explicitly advocate for Greece's withdrawal from NATO. \"Η αμυντική πολιτική της ΕΕ οφείλει να είναι στρατηγικά αυτόνομη από το ΝΑΤΟ και τις ΗΠΑ\"."
+        },
+        {
+            "id": 20,
+            "statement": "Η Επιστολική Ψήφος και η πλήρης άρση περιορισμών για την ψήφο των αποδήμων είναι απαραίτητα βήματα εκδημοκρατισμού.",
+            "score": 50,
+            "justification": "Not mentioned in the text."
+        },
+        {
+            "id": 21,
+            "statement": "Η επιλογή των διοικητών στα νοσοκομεία και τους δημόσιους φορείς πρέπει να γίνεται αυστηρά μέσω του ΑΣΕΠ και όχι με πολιτικό διορισμό.",
+            "score": 100,
+            "justification": "The party explicitly states that \"all recruitments are done under the supervision of ASEP\" and that \"no permanent administrative hierarchy position is filled by a seconded employee,\" indicating a strong preference for merit-based appointments over political ones. \"Ενισχύουμε τον ΑΣΕΠ: το σύνολο των προσλήψεων γίνεται υπό την εποπτεία του\"."
+        },
+        {
+            "id": 22,
+            "statement": "Η λειτουργία της ΕΥΠ και οι τηλεφωνικές παρακολουθήσεις γίνονται συχνά με αδιαφανή κριτήρια που παραβιάζουν το κράτος δικαίου.",
+            "score": 100,
+            "justification": "The party's proposals to bring EYP back under the Ministry of Citizen Protection, abolish the three-year waiting period for notification of surveillance, and legislatively define national security, along with judicial oversight, directly address concerns about lack of transparency and rule of law violations. \"Καταργούμε τη διάταξη που επιτρέπει τη γνωστοποίηση παρακολούθησης από την ΕΥΠ τρία χρόνια μετά την ολοκλήρωσή της\"."
+        },
+        {
+            "id": 23,
+            "statement": "Οι γιατροί του Δημοσίου συστήματος υγείας (ΕΣΥ) πρέπει να έχουν το δικαίωμα να διατηρούν ταυτόχρονα και ιδιωτικό ιατρείο.",
+            "score": 0,
+            "justification": "The party explicitly advocates for \"restoring the public character of the NHS\" and \"annulling ND's laws on doctors' labor relations and the privatization of the health system,\" which includes policies that allowed public doctors to maintain private practices. \"Αποκαθιστούμε τον δημόσιο χαρακτήρα του ΕΣΥ, με ακύρωση των νόμων της ΝΔ για τις εργασιακές σχέσεις των γιατρών και την ιδιωτικοποίηση του συστήματος υγείας\"."
+        },
+        {
+            "id": 24,
+            "statement": "Τα παιδιά των μεταναστών που γεννιούνται και μεγαλώνουν στην Ελλάδα, πρέπει να αποκτούν αυτόματα την Ελληνική Ιθαγένεια.",
+            "score": 75,
+            "justification": "The party advocates for simplifying the naturalization process and enabling citizenship for those who have lived in Greece for decades and those who have children who have already acquired Greek citizenship, which aligns with the spirit of the statement, though it doesn't explicitly state \"automatic\" acquisition for *all* children. \"Απλοποιούμε τη διαδικασία πολιτογράφησης στη βάση ευρωπαϊκών προτύπων με στόχο την ταχύτερη και δίκαιη απόδοση ιθαγένειας σε χιλιάδες ανθρώπους που ζουν και εργάζονται για δεκαετίες στη χώρα\"."
+        },
+        {
+            "id": 25,
+            "statement": "Πρέπει να επεκταθεί ο φράχτης στον Έβρο σε όλο το μήκος των συνόρων για την αποτροπή των παράνομων μεταναστών.",
+            "score": 0,
+            "justification": "The party explicitly states its opposition to the \"Fortress Europe\" mentality and \"inhumane pushbacks,\" advocating for a migration policy that respects human dignity and international law, which directly contradicts the idea of extending the Evros fence. \"Ενάντια στη λογική της “Ευρώπης-φρούριο” και τις παράνομες και απάνθρωπες επαναπροωθήσεις, σεβόμενοι τη ζωή και την αξιοπρέπεια όλων\"."
+        },
+        {
+            "id": 26,
+            "statement": "Το κράτος πρέπει να απαγορεύσει αυστηρά την εκτός σχεδίου δόμηση, ακόμα κι αν αυτό μηδενίσει την αξία της περιουσίας των μικροϊδιοκτητών.",
+            "score": 75,
+            "justification": "The party explicitly commits to completing spatial and urban planning across the country and subsequently abolishing out-of-plan construction, which implies a strict stance. The potential impact on property value is not addressed. \"Με την ολοκλήρωση του σχεδιασμού, καταργούμε την εκτός σχεδίου δόμηση\"."
+        },
+        {
+            "id": 27,
+            "statement": "Πρέπει να σταματήσει αμέσως κάθε έρευνα και εξόρυξη υδρογονανθράκων στην ελληνική επικράτεια για λόγους προστασίας του περιβάλλοντος.",
+            "score": 100,
+            "justification": "The party explicitly states its intention to \"disengage from the policy of hydrocarbon extraction, with non-renewal of exploration and exploitation permits and non-granting of new areas,\" fully supporting the cessation of such activities for environmental protection. \"Απεμπλεκόμαστε από την πολιτική εξόρυξης υδρογονανθράκων, με μη ανανέωση αδειών έρευνας και εκμετάλλευσης και μη παραχώρηση νέων περιοχών\"."
+        },
+        {
+            "id": 28,
+            "statement": "Είναι αναγκαίο να κλείσουν γρήγορα τα λιγνιτικά εργοστάσια (απολιγνιτοποίηση) για την άμεση προστασία του κλίματος.",
+            "score": 0,
+            "justification": "The party explicitly states it will \"utilize all domestic energy resources, including lignite, for as long as needed,\" and advocates for a smooth transition away from fossil fuels \"not with a unilateral cessation of lignite,\" directly opposing the quick closure of lignite plants. \"Αξιοποίση του συνόλου των εγχώριων ενεργειακών πόρων, συμπεριλαμβανομένου του λιγνίτη, για όσο διάστημα χρειαστεί\"."
+        },
+        {
+            "id": 29,
+            "statement": "Είναι απαραίτητο να αλλάξουν οι προστατευόμενες ζώνες NATURA για να διευκολυνθούν οι μεγάλες τουριστικές και ενεργειακές επενδύσεις.",
+            "score": 0,
+            "justification": "The party explicitly advocates for strengthening criteria for biodiversity protection and establishing \"minimum exclusion zones based on Natura 2000 network areas,\" indicating a commitment to environmental protection that would oppose changing these zones for investments. \"με ενισχυμένα κριτήρια για την προστασία της βιοποικιλότητας, με ελάχιστες ζώνες αποκλεισμού με βάση τις περιοχές του δικτύου Natura 2000\"."
+        },
+        {
+            "id": 30,
+            "statement": "Το κράτος πρέπει να απαγορεύσει σταδιακά την πώληση νέων οχημάτων με κινητήρες εσωτερικής καύσης υπέρ των ηλεκτρικών.",
+            "score": 75,
+            "justification": "The party mentions promoting \"electromobility for public transport, commercial fleets, and households\" as part of a new energy and climate plan, indicating a strong positive stance towards electric vehicles, but does not explicitly mention a ban on internal combustion engines. \"ηλεκτροκίνηση για τις δημόσιες μεταφορές, τους εμπορικούς στόλους, και τα νοικοκυριά\"."
+        }
+    ]
+}
