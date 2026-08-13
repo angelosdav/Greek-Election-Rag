@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιδεολογικό Quiz</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #192841;
+            color: #ffffff;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #21324d;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: "Arial Black", sans-serif;
+            margin-bottom: 10px;
+            color: #a0aab8;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8fa0b5;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        /* Start Screen */
+        #start-screen {
+            text-align: center;
+        }
+
+        .start-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 20px;
+        }
+
+        .start-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        /* Quiz Area */
+        #quiz-area {
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #152238;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.5em;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background-color: #2a3b56;
+            color: #ffffff;
+            border: 2px solid transparent;
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            background-color: #34495e;
+            border-color: #3498db;
+        }
+
+        /* Results Area */
+        #results-area {
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .match-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .match-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-container {
+            flex-grow: 1;
+            background-color: #152238;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            font-weight: bold;
+            color: white;
+            white-space: nowrap;
+            transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            width: 0%;
+        }
+
+        .party-name {
+            min-width: 170px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen">
+            <h1>ΕΚΛΟΓΙΚΗ ΠΥΞΙΔΑ</h1>
+            <div class="subtitle">Απάντησε σε 16 ερωτήσεις για να δεις με ποια κόμματα ταυτίζεσαι περισσότερο!</div>
+            <button class="start-btn" onclick="startQuiz()">Ξεκίνα το Quiz</button>
+        </div>
+
+        <!-- Quiz Area -->
+        <div id="quiz-area">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            
+            <div id="question-counter" style="text-align: center; color: #a0aab8; margin-bottom: 10px;">Ερώτηση 1 από 16</div>
+            <div class="question-text" id="question-text">
+                Φόρτωση...
+            </div>
+
+            <div class="options-container" id="options-container">
+                <button class="option-btn" onclick="answer(100)">Συμφωνώ Απόλυτα</button>
+                <button class="option-btn" onclick="answer(75)">Συμφωνώ</button>
+                <button class="option-btn" onclick="answer(50)">Δεν Ξέρω / Δεν Απαντώ</button>
+                <button class="option-btn" onclick="answer(25)">Διαφωνώ</button>
+                <button class="option-btn" onclick="answer(0)">Διαφωνώ Απόλυτα</button>
+            </div>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results-area">
+            <div class="results-header">
+                <h1>ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΣΟΥ</h1>
+                <div class="subtitle">Ποσοστό ταύτισης βάσει των προεκλογικών προγραμμάτων</div>
+            </div>
+            
+            <div class="match-list" id="match-list">
+                <!-- Bars will be generated here dynamically -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="start-btn" style="background-color: #2ecc71;" onclick="location.reload()">Κάν'το ξανά</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz_data.js"></script>
+    <script>
+        // Quiz Questions Data
+        const questions = [
+            // Economy Axis (0 = Left/State, 100 = Right/Market)
+            { text: "Το κράτος πρέπει να παρεμβαίνει στην ελεύθερη αγορά για να ελέγχει τις τιμές των βασικών αγαθών (π.χ. πλαφόν στα σούπερ μάρκετ).", axis: "econ", reverse: true },
+            { text: "Η ιδιωτικοποίηση στρατηγικών υποδομών, όπως η ενέργεια (ΔΕΗ) και η διαχείριση υδάτων (ΕΥΔΑΠ), βοηθάει στην ανάπτυξη της χώρας.", axis: "econ", reverse: false },
+            { text: "Πρέπει να υπάρχει πλήρης προστασία της πρώτης κατοικίας από πλειστηριασμούς, ανεξαρτήτως του ύψους του χρέους του οφειλέτη.", axis: "econ", reverse: true },
+            { text: "Το κράτος πρέπει να απαγορεύσει αυστηρά την εκτός σχεδίου δόμηση, ακόμα κι αν αυτό μηδενίσει την αξία της περιουσίας των μικροϊδιοκτητών.", axis: "econ", reverse: true },
+            { text: "Πρέπει να σταματήσει αμέσως κάθε έρευνα και εξόρυξη υδρογονανθράκων στην ελληνική επικράτεια για λόγους προστασίας του περιβάλλοντος.", axis: "econ", reverse: true },
+            { text: "Η εργατική νομοθεσία πρέπει να δίνει απόλυτη ευελιξία στο ωράριο (π.χ. διευθέτηση χρόνου) για να τονωθεί η απασχόληση.", axis: "econ", reverse: false },
+            { text: "Πρέπει να επιτρέπεται ελεύθερα η ίδρυση και λειτουργία Μη Κρατικών (Ιδιωτικών) Πανεπιστημίων στην Ελλάδα.", axis: "econ", reverse: false },
+            { text: "Οι γιατροί του Δημοσίου συστήματος υγείας (ΕΣΥ) πρέπει να έχουν το δικαίωμα να διατηρούν ταυτόχρονα και ιδιωτικό ιατρείο.", axis: "econ", reverse: false },
+            
+            // Society Axis (0 = Conservative/Nationalist, 100 = Progressive/Globalist)
+            { text: "Τα ομόφυλα ζευγάρια πρέπει να έχουν το δικαίωμα πολιτικού γάμου και τεκνοθεσίας (υιοθεσίας).", axis: "soc", reverse: false },
+            { text: "Η επιλογή των διοικητών στα νοσοκομεία και τους δημόσιους φορείς πρέπει να γίνεται αυστηρά μέσω του ΑΣΕΠ και όχι με πολιτικό διορισμό.", axis: "soc", reverse: false },
+            { text: "Η λειτουργία της ΕΥΠ και οι τηλεφωνικές παρακολουθήσεις γίνονται συχνά με αδιαφανή κριτήρια που παραβιάζουν το κράτος δικαίου.", axis: "soc", reverse: false },
+            { text: "Είναι αναγκαίο να κλείσουν γρήγορα τα λιγνιτικά εργοστάσια (απολιγνιτοποίηση) για την άμεση προστασία του κλίματος.", axis: "soc", reverse: false },
+            { text: "Πρέπει να εφαρμοστεί αυστηρά η Πανεπιστημιακή Αστυνομία (ΟΠΠΙ) για να σταματήσουν οι καταλήψεις και οι φθορές στα ΑΕΙ.", axis: "soc", reverse: true },
+            { text: "Πρέπει να θεσπιστούν αυστηρότεροι νομικοί περιορισμοί στο δικαίωμα των πορειών, των απεργιών και των συναθροίσεων.", axis: "soc", reverse: true },
+            { text: "Η Ελλάδα πρέπει να συνάπτει τεράστια εξοπλιστικά προγράμματα, ακόμα κι αν αυτό σημαίνει λιγότερα χρήματα για το κοινωνικό κράτος.", axis: "soc", reverse: true },
+            { text: "Πρέπει να επεκταθεί ο φράχτης στον Έβρο σε όλο το μήκος των συνόρων για την αποτροπή των παράνομων μεταναστών.", axis: "soc", reverse: true }
+        ];
+
+        let currentQuestion = 0;
+        let answers = { econ: [], soc: [] };
+        // partiesData is now loaded globally from quiz_data.js
+
+        function startQuiz() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('quiz-area').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
+
+            const q = questions[currentQuestion];
+            document.getElementById('question-text').innerText = q.text;
+            document.getElementById('question-counter').innerText = `Ερώτηση ${currentQuestion + 1} από ${questions.length}`;
+            
+            // Update progress bar
+            const progress = (currentQuestion / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+        }
+
+        function answer(value) {
+            const q = questions[currentQuestion];
+            
+            // If the question is framed from a left/conservative perspective, 
+            // "Agree (100)" actually means a lower score on our 0-100 axes.
+            // So we reverse the value (100 - value).
+            let finalValue = q.reverse ? (100 - value) : value;
+            
+            answers[q.axis].push(finalValue);
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-area').style.display = 'none';
+            document.getElementById('results-area').style.display = 'block';
+
+            // Calculate user's average scores for the 2D plot
+            const userEcon = answers.econ.reduce((a, b) => a + b, 0) / answers.econ.length;
+            const userSoc = answers.soc.reduce((a, b) => a + b, 0) / answers.soc.length;
+
+            console.log("User Scores - Econ:", userEcon, "Soc:", userSoc);
+
+            // Calculate matches using 16-dimensional Root Mean Square (RMS) error
+            // This is much fairer than 2D distance, as it evaluates per-question agreement
+            const userAnswers = answers.econ.concat(answers.soc);
+
+            let matches = partiesData.map(party => {
+                let matchPercentage = 0;
+                
+                if (party.quiz_answers && party.quiz_answers.length === 16) {
+                    let sumSq = 0;
+                    for (let i = 0; i < 16; i++) {
+                        sumSq += Math.pow(userAnswers[i] - party.quiz_answers[i], 2);
+                    }
+                    const rms = Math.sqrt(sumSq / 16.0);
+                    
+                    // We want match to fall off. If RMS is 0, match is 100%.
+                    // If RMS is 100 (complete disagreement on everything), match is 0%.
+                    matchPercentage = 100 - rms;
+                } else {
+                    // Fallback to 2D logic
+                    const distEcon = party.econ - userEcon;
+                    const distSoc = party.soc - userSoc;
+                    const distance = Math.sqrt((distEcon * distEcon) + (distSoc * distSoc));
+                    matchPercentage = 100 - ((distance / 75) * 100);
+                }
+                
+                matchPercentage = Math.max(0, Math.min(100, matchPercentage)); // clamp 0-100
+
+                return {
+                    name: party.name,
+                    color: party.color,
+                    match: matchPercentage
+                };
+            });
+
+            // Sort by match percentage (descending)
+            matches.sort((a, b) => b.match - a.match);
+            
+            // Keep only the Top 3 matches
+            matches = matches.slice(0, 3);
+
+            // Render bars
+            const listContainer = document.getElementById('match-list');
+            listContainer.innerHTML = ''; // Clear
+
+            matches.forEach((m, index) => {
+                const matchVal = m.match.toFixed(1);
+                const displayPartyName = m.name.replace(/_/g, ' ');
+
+                const row = document.createElement('div');
+                row.className = 'match-row';
+                
+                // Top match gets special highlighting (gold color and larger font)
+                let fontStyle = index === 0 ? 'font-size: 1.3em; color: #f1c40f; font-weight: bold; text-shadow: 0 0 10px rgba(241,196,15,0.3);' : '';
+
+                row.innerHTML = `
+                    <div class="party-name" style="${fontStyle}">
+                        ${displayPartyName}
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="background-color: ${m.color}; width: 0%;">
+                            ${matchVal}%
+                        </div>
+                    </div>
+                `;
+                
+                listContainer.appendChild(row);
+
+                // Animate the bar filling up
+                setTimeout(() => {
+                    const barFill = row.querySelector('.bar-fill');
+                    barFill.style.width = `${matchVal}%`;
+                }, 100);
+            });
+        }
+    </script>
+</body>
+</html>

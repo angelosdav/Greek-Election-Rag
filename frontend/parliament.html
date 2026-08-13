@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σύνθεση της Βουλής - 3D</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header-box {
+            position: absolute;
+            bottom: 30px;
+            top: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background-color: rgba(15, 23, 42, 0.8);
+            padding: 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .header-title {
+            font-family: "Arial Black", sans-serif;
+            font-size: 1.8em;
+            letter-spacing: -1px;
+            margin: 0;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 0.9em;
+            color: #94a3b8;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-image: url('../media/parliament_bg.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        /* Ambient overlay to darken the bottom/sides if needed */
+        .ambient-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center 60%, transparent 20%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        .party-card {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            border: 1px solid #d1d5db;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 2px 0 rgba(255,255,255,1);
+            border-radius: 6px;
+            padding: 8px 12px;
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .party-card:hover {
+            transform: translate(-50%, -50%) scale(1.15) translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,1);
+            z-index: 50;
+        }
+
+        /* Add colored block shadow based on party color (added via inline style) */
+        
+        .party-logo {
+            width: 70px;
+            height: 45px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .party-name-fallback {
+            font-size: 11px;
+            font-weight: 800;
+            color: #333;
+            text-align: center;
+            width: 70px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .party-seats {
+            font-family: "Arial Black", sans-serif;
+            font-size: 24px;
+            color: #111827;
+            border-top: 2px solid #e5e7eb;
+            width: 100%;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .pointer-line {
+            position: absolute;
+            width: 2px;
+            background: rgba(255,255,255,0.8);
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+
+        .pointer-circle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 5px rgba(0,0,0,0.8);
+        }
+
+        /* Tooltip for MPs */
+        .mp-tooltip {
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            width: 180px;
+            max-height: 200px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            font-size: 12px;
+            pointer-events: auto;
+        }
+
+        /* Custom scrollbar for tooltip */
+        .mp-tooltip::-webkit-scrollbar {
+            width: 4px;
+        }
+        .mp-tooltip::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1); 
+        }
+        .mp-tooltip::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3); 
+            border-radius: 4px;
+        }
+
+        .party-card.active .mp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mp-name {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mp-name:last-child {
+            border-bottom: none;
+        }
+
+        .mp-name a:hover {
+            text-decoration: underline !important;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-box">
+        <h1 class="header-title">ΣΥΝΘΕΣΗ ΤΗΣ ΒΟΥΛΗΣ</h1>
+        <div class="header-subtitle">ΟΙ 300 ΕΔΡΕΣ ΤΗΣ ΕΘΝΙΚΗΣ ΑΝΤΙΠΡΟΣΩΠΕΙΑΣ</div>
+    </div>
+
+    <div class="chart-container" id="chart-container">
+        <div class="ambient-overlay"></div>
+        <!-- Cards will be injected here -->
+    </div>
+
+    <script src="../data/mps.js"></script>
+    <script>
+        // Data mappings
+        const logoMap = {
+            'ΚΚΕ': '../data/logos/ΚΚΕ.png',
+            'Πλεύση Ελευθερίας': '../data/logos/Πλεύση_Ελευθερίας.png',
+            'ΣΥΡΙΖΑ': '../data/logos/ΕΛΑΣ.png',
+            'ΠΑΣΟΚ': '../data/logos/ΠΑΣΟΚ.png',
+            'Ελληνική Λύση': '../data/logos/Ελληνική_Λύση.png',
+            'Νέα Δημοκρατία': '../data/logos/ΝΔ.png',
+            'Νίκη': '../data/logos/Νίκη.png',
+            'Σπαρτιάτες': '../data/logos/Σπαρτιάτες.png'
+        };
+
+        // Positions for the 3D arc effect (left %, top %, pointer length px)
+        const positionMap = {
+            'ΚΚΕ': { left: 16, top: 28, line: 180 }, // Block 1 front
+            'Πλεύση Ελευθερίας': { left: 8, top: 15, line: 120 }, // Block 1 back
+            'ΣΥΡΙΖΑ': { left: 32, top: 22, line: 160 }, // Block 2 front
+            'ΠΑΣΟΚ': { left: 45, top: 12, line: 140 }, // Block 2 back (near center)
+            'Νέα Δημοκρατία': { left: 62, top: 15, line: 200 }, // Block 3 dominant
+            'Ελληνική Λύση': { left: 78, top: 12, line: 130 }, // Block 4 upper
+            'Νίκη': { left: 86, top: 28, line: 120 }, // Block 4 middle
+            'Σπαρτιάτες': { left: 92, top: 15, line: 90 } // Block 4 back edge
+        };
+
+        function render3DParliament() {
+            const partyCounts = {};
+            mpsData.forEach(mp => {
+                if (!partyCounts[mp.party]) {
+                    partyCounts[mp.party] = { count: 0, color: mp.color, mps: [] };
+                }
+                partyCounts[mp.party].count++;
+                partyCounts[mp.party].mps.push(mp); // push the entire object!
+            });
+
+            const container = document.getElementById('chart-container');
+            
+            let activeTooltipCard = null;
+            let hideTimeout = null;
+
+            Object.keys(partyCounts).forEach(partyName => {
+                const data = partyCounts[partyName];
+                const pos = positionMap[partyName];
+                if (!pos) return;
+
+                const card = document.createElement('div');
+                card.className = 'party-card';
+                card.style.left = pos.left + '%';
+                card.style.top = pos.top + '%';
+                // Add a subtle colored glow based on the party color
+                card.style.borderBottom = `4px solid ${data.color}`;
+
+                const logoSrc = logoMap[partyName];
+                let logoHtml = '';
+                if (logoSrc) {
+                    logoHtml = `<img src="${logoSrc}" class="party-logo" alt="${partyName}">`;
+                } else {
+                    logoHtml = `<div class="party-name-fallback" style="color: ${data.color}">${partyName}</div>`;
+                }
+
+                // Generate MP list HTML
+                const mpListHtml = data.mps.map(mp => `
+                    <div class="mp-name">
+                        <a href="${mp.wikiLink || '#'}" target="_blank" style="color: white; text-decoration: none;">${mp.name}</a>
+                    </div>
+                `).join('');
+
+                card.innerHTML = `
+                    ${logoHtml}
+                    <div class="party-seats">${data.count}</div>
+                    
+                    <!-- Pointer line -->
+                    <div class="pointer-line" style="height: ${pos.line}px; bottom: -${pos.line}px;"></div>
+                    <div class="pointer-circle" style="bottom: -${pos.line + 4}px; background-color: ${data.color};"></div>
+                    
+                    <!-- Tooltip -->
+                    <div class="mp-tooltip">
+                        <div style="font-weight: bold; color: ${data.color}; margin-bottom: 5px; text-transform: uppercase;">ΒΟΥΛΕΥΤΕΣ (${data.count})</div>
+                        ${mpListHtml}
+                    </div>
+                `;
+
+                card.addEventListener('mouseenter', () => {
+                    if (activeTooltipCard && activeTooltipCard !== card) {
+                        activeTooltipCard.classList.remove('active');
+                    }
+                    if (hideTimeout) {
+                        clearTimeout(hideTimeout);
+                        hideTimeout = null;
+                    }
+                    card.classList.add('active');
+                    activeTooltipCard = card;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        if (activeTooltipCard === card) {
+                            card.classList.remove('active');
+                            activeTooltipCard = null;
+                        }
+                    }, 25000);
+                });
+
+                container.appendChild(card);
+            });
+
+            // Close active tooltip when clicking anywhere outside of it
+            document.addEventListener('click', (e) => {
+                if (activeTooltipCard && !activeTooltipCard.contains(e.target)) {
+                    activeTooltipCard.classList.remove('active');
+                    activeTooltipCard = null;
+                    if (hideTimeout) {
+                        clearTimeout(hideTimeout);
+                        hideTimeout = null;
+                    }
+                }
+            });
+        }
+
+        render3DParliament();
+    </script>
+</body>
+</html>

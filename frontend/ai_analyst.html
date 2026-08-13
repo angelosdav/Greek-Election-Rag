@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Αναλυτής</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #192841;
+            --panel-bg: #111b2b;
+            --text-color: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-color: #3498db;
+            --user-msg-bg: #111b2b;
+            --border-color: #3d506e;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden; /* prevent body scroll */
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d506e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .chat-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            height: 100%;
+            position: relative;
+        }
+
+        .chat-header {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 10;
+        }
+
+        .chat-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: default;
+        }
+
+        .change-key-btn {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .change-key-btn:hover {
+            background: #2a3b56;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(25, 40, 65, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-content {
+            background-color: #21324d;
+            padding: 40px;
+            border-radius: 12px;
+            border: none;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            font-size: 1.4em;
+            font-family: "Arial Black", sans-serif;
+            color: #a0aab8;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: #8fa0b5;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .modal-input-wrapper {
+            margin-bottom: 8px;
+        }
+
+        .modal-input-wrapper input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .modal-input-wrapper input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .modal-error {
+            color: #f85149;
+            font-size: 13px;
+            margin-top: 5px;
+            /* Removed min-height to prevent empty gap */
+        }
+
+        .modal-verify-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .modal-verify-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .tutorial-link {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .tutorial-link a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px 20px 100px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .message {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 100%;
+        }
+
+        .message.user .message-content {
+            background-color: var(--panel-bg);
+            padding: 12px 20px;
+            border-radius: 20px;
+            max-width: 80%;
+        }
+
+        .message.ai .message-content {
+            /* No background for AI messages, just plain text on the main background */
+            background-color: transparent;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .message-content p {
+            margin: 0 0 15px 0;
+        }
+        .message-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .message-content ul, .message-content ol {
+            margin: 0 0 15px 0;
+            padding-left: 20px;
+        }
+
+        .sources-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .sources-container details summary {
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+        
+        .source-item {
+            background-color: var(--panel-bg);
+            padding: 10px 14px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .source-party {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .chat-input-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, transparent, var(--bg-color) 40%);
+            padding: 20px 20px 30px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-input-container {
+            width: 100%;
+            max-width: 750px;
+            background-color: var(--panel-bg);
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .chat-input-container:focus-within {
+            border-color: #536b94;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            padding: 10px 10px;
+        }
+        
+        input[type="text"]::placeholder {
+            color: #64748b;
+        }
+
+        button#sendBtn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: opacity 0.2s;
+        }
+        
+        /* Arrow icon using CSS borders */
+        .arrow-up {
+            width: 0; 
+            height: 0; 
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid white;
+            margin-bottom: 2px;
+        }
+
+        button#sendBtn:hover {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            background-color: #334155;
+            cursor: not-allowed;
+        }
+        
+        .input-disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            padding: 5px 0;
+        }
+        
+        .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-muted);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.6; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px 20px 100px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .message {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 100%;
+        }
+
+        .message.user .message-content {
+            background-color: var(--panel-bg);
+            padding: 12px 20px;
+            border-radius: 20px;
+            max-width: 80%;
+        }
+
+        .message.ai .message-content {
+            /* No background for AI messages, just plain text on the main background */
+            background-color: transparent;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .message-content p {
+            margin: 0 0 15px 0;
+        }
+        .message-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .message-content ul, .message-content ol {
+            margin: 0 0 15px 0;
+            padding-left: 20px;
+        }
+
+        .sources-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .sources-container details summary {
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+        
+        .source-item {
+            background-color: var(--panel-bg);
+            padding: 10px 14px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .source-party {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .chat-input-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, transparent, var(--bg-color) 40%);
+            padding: 20px 20px 30px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-input-container {
+            width: 100%;
+            max-width: 750px;
+            background-color: var(--panel-bg);
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .chat-input-container:focus-within {
+            border-color: #536b94;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            padding: 10px 10px;
+        }
+        
+        input[type="text"]::placeholder {
+            color: #64748b;
+        }
+
+        button#sendBtn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #4285f4;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: opacity 0.2s;
+        }
+        
+
+
+        button#sendBtn:hover {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            background-color: #334155;
+            cursor: not-allowed;
+        }
+        
+        .input-disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            padding: 5px 0;
+        }
+        
+        .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-muted);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.6; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    
+        #modalApiKeyInput {
+            -webkit-text-security: disc;
+        }
+
+        .chat-container.is-empty .chat-messages {
+            display: none;
+        }
+
+        .chat-container.is-empty .chat-input-wrapper {
+            position: relative;
+            background: none;
+            bottom: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding: 0 20px;
+        }
+        
+        .welcome-text {
+            display: none;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+        
+        .chat-container.is-empty .welcome-text {
+            display: block;
+        }
+</style>
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>AI Αναλυτής</h2>
+            <button id="changeKeyBtn" class="change-key-btn">API Key</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai">
+                <div class="message-content">
+                    <p>Γεια! Πώς μπορώ να σε βοηθήσω σήμερα;</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-wrapper">
+            <div class="welcome-text">Από πού να αρχίσουμε;</div>
+            <div class="chat-input-container">
+                <input type="text" id="userInput" name="chat_query_field" placeholder="Ρώτα οτιδήποτε..." autocomplete="new-password" spellcheck="false" data-lpignore="true" data-1p-ignore="true">
+                <button id="sendBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-disclaimer">Ο AI Αναλυτής μπορεί να κάνει λάθη. Ελέγξτε τις απαντήσεις.</div>
+        </div>
+    </div>
+
+    <!-- API Key Modal Overlay -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="modal-content">
+            <h3>Απαιτείται Gemini API Key</h3>
+            <p>Για να χρησιμοποιήσετε τον AI Αναλυτή, παρακαλώ εισάγετε το προσωπικό σας Gemini API Key.</p>
+            
+            <div class="modal-input-wrapper">
+                <input type="text" id="modalApiKeyInput" placeholder="AIzaSy..." autocomplete="off">
+                <div class="modal-error" id="modalError"></div>
+            </div>
+            
+            <button class="modal-verify-btn" id="verifyBtn">Επιβεβαίωση & Είσοδος</button>
+            
+            <div class="tutorial-link">
+                Δεν έχεις κλειδί; <br>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank">Βγάλε ένα δωρεάν στο Google AI Studio</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const inputField = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const apiKeyInput = document.getElementById('modalApiKeyInput');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const modal = document.getElementById('apiModal');
+        const errorMsg = document.getElementById('modalError');
+        const changeKeyBtn = document.getElementById('changeKeyBtn');
+        
+        let currentApiKey = sessionStorage.getItem('geminiApiKey');
+        
+        // Load chat history if it exists
+        const savedHistory = sessionStorage.getItem('chatHistory');
+        const chatContainer = document.querySelector('.chat-container');
+        if (savedHistory) {
+            chatMessages.innerHTML = savedHistory;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        } else {
+            chatContainer.classList.add('is-empty');
+            chatMessages.innerHTML = '';
+        }
+
+        function saveChatHistory() {
+            sessionStorage.setItem('chatHistory', chatMessages.innerHTML);
+        }
+        
+        // Hide modal if key exists
+        if (currentApiKey) {
+            modal.classList.add('hidden');
+        }
+
+        changeKeyBtn.addEventListener('click', () => {
+            apiKeyInput.value = currentApiKey || '';
+            errorMsg.textContent = '';
+            modal.classList.remove('hidden');
+        });
+
+        // Close modal when clicking outside the modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                apiKeyInput.value = ''; // Clear DOM to prevent browser autofill triggers during chat
+            }
+        });
+
+        verifyBtn.addEventListener('click', async () => {
+            const key = apiKeyInput.value.trim();
+            if (!key) {
+                errorMsg.textContent = 'Παρακαλώ εισάγετε ένα κλειδί.';
+                return;
+            }
+            
+            errorMsg.textContent = '';
+            verifyBtn.textContent = 'Επαλήθευση...';
+            verifyBtn.classList.add('loading');
+            verifyBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/verify_key', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ api_key: key })
+                });
+                
+                const data = await response.json();
+                
+                if (data.valid) {
+                    sessionStorage.setItem('geminiApiKey', key);
+                    currentApiKey = key;
+                    modal.classList.add('hidden');
+                    apiKeyInput.value = ''; // Clear DOM to prevent browser autofill triggers during chat
+                } else {
+                    errorMsg.textContent = 'Άκυρο κλειδί: ' + (data.error || 'Δοκιμάστε ξανά.');
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Σφάλμα σύνδεσης με τον Server.';
+                console.error(err);
+            } finally {
+                verifyBtn.textContent = 'Επιβεβαίωση & Είσοδος';
+                verifyBtn.classList.remove('loading');
+                verifyBtn.disabled = false;
+            }
+        });
+        
+        // Configure marked to open links in new tab and use breaks
+        marked.setOptions({
+            breaks: true,
+            gfm: true
+        });
+
+        function createSourcesUI(sources) {
+            if (!sources || sources.length === 0) return null;
+            
+            const sourcesContainer = document.createElement('div');
+            sourcesContainer.className = 'sources-container';
+            
+            const details = document.createElement('details');
+            const summary = document.createElement('summary');
+            summary.textContent = 'Πηγές (Δηλώσεις Προγραμμάτων)';
+            details.appendChild(summary);
+            
+            // Group sources by party to avoid repeating the party name
+            const groupedSources = {};
+            sources.forEach(source => {
+                if (!groupedSources[source.party]) {
+                    groupedSources[source.party] = [];
+                }
+                groupedSources[source.party].push(source.text);
+            });
+            
+            for (const [partyName, texts] of Object.entries(groupedSources)) {
+                const partyBlock = document.createElement('div');
+                partyBlock.className = 'source-party-block';
+                partyBlock.style.marginBottom = '15px';
+                
+                const partyTitle = document.createElement('div');
+                partyTitle.className = 'source-party';
+                partyTitle.textContent = partyName;
+                partyBlock.appendChild(partyTitle);
+                
+                const ul = document.createElement('ul');
+                ul.style.marginTop = '5px';
+                ul.style.paddingLeft = '20px';
+                ul.style.color = '#8fa0b5';
+                ul.style.fontSize = '0.9em';
+                texts.forEach(text => {
+                    const li = document.createElement('li');
+                    li.textContent = `"${text}"`;
+                    li.style.marginBottom = '8px';
+                    ul.appendChild(li);
+                });
+                
+                partyBlock.appendChild(ul);
+                details.appendChild(partyBlock);
+            }
+            
+            sourcesContainer.appendChild(details);
+            return sourcesContainer;
+        }
+
+        function addMessage(text, isUser, sources = []) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isUser ? 'user' : 'ai'}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            if (isUser) {
+                contentDiv.textContent = text;
+            } else {
+                contentDiv.innerHTML = marked.parse(text);
+                const sourcesUI = createSourcesUI(sources);
+                if (sourcesUI) contentDiv.appendChild(sourcesUI);
+            }
+            
+            msgDiv.appendChild(contentDiv);
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            saveChatHistory();
+        }
+
+        async function sendMessage() {
+            const text = inputField.value.trim();
+            if (!text) return;
+            
+            if (!currentApiKey) {
+                addMessage('Σφάλμα: Παρακαλώ εισάγετε το Gemini API Key σας πατώντας το κουμπί Αλλαγή API Key.', false);
+                return;
+            }
+            
+            // Add user message
+            chatContainer.classList.remove('is-empty');
+            addMessage(text, true);
+            inputField.value = '';
+            
+            // Disable input while fetching
+            inputField.disabled = true;
+            sendBtn.disabled = true;
+            
+            // Create AI Message Div
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message ai';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            const textDiv = document.createElement('div');
+            textDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+            contentDiv.appendChild(textDiv);
+            
+            msgDiv.appendChild(contentDiv);
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query: text, api_key: currentApiKey })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                textDiv.innerHTML = '';
+                let fullText = '';
+                
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop(); // Keep incomplete line
+                    
+                    for (const line of lines) {
+                        if (!line.trim()) continue;
+                        try {
+                            const data = JSON.parse(line);
+                            if (data.type === 'chunk') {
+                                fullText += data.text;
+                                textDiv.innerHTML = marked.parse(fullText);
+                            } else if (data.type === 'sources') {
+                                const sourcesUI = createSourcesUI(data.data);
+                                if (sourcesUI) contentDiv.appendChild(sourcesUI);
+                            } else if (data.type === 'error') {
+                                fullText += '\n\n**Σφάλμα:** ' + data.error;
+                                textDiv.innerHTML = marked.parse(fullText);
+                            }
+                        } catch (e) {
+                            console.error('Error parsing line:', line, e);
+                        }
+                    }
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                textDiv.textContent = 'Σφάλμα: Δεν ήταν δυνατή η σύνδεση με τον AI. Βεβαιωθείτε ότι το backend τρέχει.';
+            } finally {
+                inputField.disabled = false;
+                sendBtn.disabled = false;
+                inputField.focus();
+                saveChatHistory();
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

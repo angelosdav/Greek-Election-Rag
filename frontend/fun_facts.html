@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts - Ηγεσία</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #0f172a; /* Very dark blue/black background */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            height: calc(100vh - 60px); /* Adjust for header if needed */
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Left side: Cover Image */
+        .left-panel {
+            width: 45%;
+            position: relative;
+            background-color: #1e293b;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .cover-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Gradient overlay to blend the bottom and right edges */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 60%, #0f172a 100%), 
+                        linear-gradient(to top, #0f172a 0%, transparent 30%);
+        }
+
+        /* Right side: Leaderboard */
+        .nav-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #1e293b;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid #334155;
+            color: #cbd5e1;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .nav-arrow:hover {
+            background-color: #334155;
+            color: white;
+            border-color: #475569;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .right-panel {
+            width: 55%;
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #0f172a;
+            overflow-y: hidden; /* No scroll */
+            position: relative;
+        }
+
+        /* Sport24 Style Header */
+        .header-box {
+            background-color: #1e293b;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 0; /* Σαν τετράγωνο κουτάκι */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-title {
+            font-family: "Arial Black", sans-serif;
+            font-size: 1.6em;
+            letter-spacing: -1px;
+            margin: 0;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 0.9em;
+            color: #94a3b8;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            background-color: transparent;
+            padding: 0;
+        }
+
+        /* The List */
+        .leaderboard {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 11px 20px;
+            border-radius: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .row:hover {
+            transform: translateX(10px);
+            background-color: #2dd4bf; /* Teal accent on hover */
+            color: #0f172a;
+        }
+
+        .row:hover .rank, .row:hover .name, .row:hover .duration {
+            color: #0f172a;
+        }
+
+        /* Top 1 Special Styling */
+        .row.rank-1 {
+            background: linear-gradient(90deg, #f43f5e 0%, #be123c 100%);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(244, 63, 94, 0.2);
+            margin-bottom: 5px;
+        }
+        
+        .row.rank-1:hover {
+            background: linear-gradient(90deg, #fb7185 0%, #e11d48 100%);
+            color: white;
+        }
+
+        .row.rank-1 .rank, .row.rank-1 .name, .row.rank-1 .duration {
+            color: #ffffff;
+        }
+
+        /* Row Elements */
+        .rank {
+            font-family: "Arial Black", sans-serif;
+            font-size: 1.2em;
+            width: 30px;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .logo-container {
+            width: 35px;
+            height: 35px;
+            margin-left: 10px;
+            margin-right: 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid #334155;
+        }
+
+        .party-logo {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+
+        .name {
+            flex-grow: 1;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #f1f5f9;
+        }
+
+        .duration {
+            font-family: "Arial Black", sans-serif;
+            font-size: 0.95em;
+            color: #38bdf8;
+            width: 200px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .footnote {
+            color: #64748b; /* Faded color */
+            font-size: 0.85em;
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Placeholder styles for missing cover photo */
+        .placeholder-cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            color: #475569;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .placeholder-cover svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .insta-link {
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .insta-link:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- LEFT PANEL: WINNER COVER -->
+    <div class="left-panel" id="cover-panel">
+        <div class="placeholder-cover" id="placeholder-cover">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <h3>Φωτογραφία Αρχηγού</h3>
+            <p>Τοποθετήστε τις φωτογραφίες στο data/leaders_photos/</p>
+        </div>
+        <img id="winner-photo" class="cover-photo" src="" alt="Winner" style="display: none;" onerror="showPlaceholder()">
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- RIGHT PANEL: LEADERBOARD -->
+    <div class="right-panel">
+        <div class="nav-arrow" onclick="nextFact()" title="Επόμενο Fun Fact">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+            </svg>
+        </div>
+
+        <div class="header-box">
+            <h1 class="header-title" id="fact-title">ΧΡΟΝΟΣ ΠΑΡΑΜΟΝΗΣ ΣΤΗΝ ΗΓΕΣΙΑ</h1>
+            <div class="header-subtitle" id="fact-subtitle">ΣΥΝΟΛΙΚΕΣ ΗΜΕΡΕΣ ΩΣ ΕΝ ΕΝΕΡΓΕΙΑ ΑΡΧΗΓΟΙ</div>
+        </div>
+
+        <div class="leaderboard" id="leaderboard-container">
+            <!-- Rows injected by JS -->
+        </div>
+        
+        <div class="footnote" id="fact-footnote">* Ο ΧΡΟΝΟΣ ΥΠΟΛΟΓΙΖΕΤΑΙ ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟ ΚΟΜΜΑ ΠΟΥ ΕΚΠΡΟΣΩΠΟΥΝ ΣΗΜΕΡΑ</div>
+    </div>
+
+    <script src="../data/leaders.js"></script>
+    <script>
+        function showPlaceholder() {
+            document.getElementById('winner-photo').style.display = 'none';
+            document.getElementById('placeholder-cover').style.display = 'flex';
+        }
+
+        // Function to calculate exact years, months and days between two dates
+        function calculateDuration(startDateStr) {
+            const start = new Date(startDateStr);
+            const now = new Date();
+            
+            let years = now.getFullYear() - start.getFullYear();
+            let months = now.getMonth() - start.getMonth();
+            let days = now.getDate() - start.getDate();
+            
+            if (days < 0) {
+                months--;
+                // Get number of days in the previous month
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+            
+            // Adjust if current month is before start month
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Calculate total days for precise sorting
+            const diffTime = Math.abs(now - start);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+            return { years, months, days, totalDays: diffDays };
+        }
+
+        function formatDurationText(duration) {
+            // Formatter for thousands separator
+            const formatter = new Intl.NumberFormat('el-GR');
+            return `${formatter.format(duration.totalDays)} ΗΜΕΡΕΣ`;
+        }
+
+        const data = leadersData;
+        const factsList = ['duration', 'instagram', 'age', 'peak'];
+        let currentFactIndex = 0;
+
+        const partyColors = {
+            "ΝΔ": "linear-gradient(90deg, #1d4ed8 0%, #1e3a8a 100%)",
+            "ΠΑΣΟΚ": "linear-gradient(90deg, #16a34a 0%, #14532d 100%)",
+            "ΚΚΕ": "linear-gradient(90deg, #e11d48 0%, #9f1239 100%)",
+            "Ελληνική_Λύση": "linear-gradient(90deg, #2563eb 0%, #1e40af 100%)",
+            "Πλεύση_Ελευθερίας": "linear-gradient(90deg, #d946ef 0%, #a21caf 100%)",
+            "Φωνή_Λογικής": "linear-gradient(90deg, #0284c7 0%, #075985 100%)",
+            "ΕΛΑΣ": "linear-gradient(90deg, #db2777 0%, #be185d 100%)",
+            "ΜέΡΑ25": "linear-gradient(90deg, #dc2626 0%, #991b1b 100%)",
+            "Εθνικό_Κόμμα_Έλληνες": "linear-gradient(90deg, #1e293b 0%, #0f172a 100%)"
+        };
+
+        // Pre-calculate durations and ages
+        data.forEach(leader => {
+            leader.duration = calculateDuration(leader.startDate);
+            if (leader.birthDate) {
+                leader.ageData = calculateDuration(leader.birthDate);
+            }
+        });
+
+        function nextFact() {
+            currentFactIndex = (currentFactIndex + 1) % factsList.length;
+            renderLeaderboard();
+        }
+
+        function renderLeaderboard() {
+            const currentMode = factsList[currentFactIndex];
+            const titleEl = document.getElementById('fact-title');
+            const subTitleEl = document.getElementById('fact-subtitle');
+            const footnoteEl = document.getElementById('fact-footnote');
+
+            if (currentMode === 'duration') {
+                titleEl.textContent = "ΧΡΟΝΟΣ ΠΑΡΑΜΟΝΗΣ ΣΤΗΝ ΗΓΕΣΙΑ";
+                subTitleEl.textContent = "ΣΥΝΟΛΙΚΕΣ ΗΜΕΡΕΣ ΩΣ ΕΝ ΕΝΕΡΓΕΙΑ ΑΡΧΗΓΟΙ";
+                footnoteEl.textContent = "* Ο ΧΡΟΝΟΣ ΥΠΟΛΟΓΙΖΕΤΑΙ ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟ ΚΟΜΜΑ ΠΟΥ ΕΚΠΡΟΣΩΠΟΥΝ ΣΗΜΕΡΑ";
+                
+                data.sort((a, b) => {
+                    const diff = b.duration.totalDays - a.duration.totalDays;
+                    if (diff !== 0) return diff;
+                    return a.leader.localeCompare(b.leader, 'el');
+                });
+            } else if (currentMode === 'instagram') {
+                titleEl.textContent = "ΔΥΝΑΜΙΚΗ ΣΤΟ INSTAGRAM";
+                subTitleEl.textContent = "ΣΥΝΟΛΙΚΟΙ ΑΚΟΛΟΥΘΟΙ ΣΤΟΝ ΠΡΟΣΩΠΙΚΟ ΛΟΓΑΡΙΑΣΜΟ";
+                footnoteEl.textContent = "* ΟΙ ΑΡΧΗΓΟΙ ΧΩΡΙΣ ΑΚΟΛΟΥΘΟΥΣ ΔΕΝ ΔΙΑΤΗΡΟΥΝ ΠΡΟΣΩΠΙΚΟ ΛΟΓΑΡΙΑΣΜΟ ΣΤΟ INSTAGRAM";
+
+                data.sort((a, b) => {
+                    const diff = (b.instagramFollowers || 0) - (a.instagramFollowers || 0);
+                    if (diff !== 0) return diff;
+                    return a.leader.localeCompare(b.leader, 'el');
+                });
+            } else if (currentMode === 'age') {
+                titleEl.textContent = "ΗΛΙΚΙΑΚΟΣ ΧΑΡΤΗΣ";
+                subTitleEl.textContent = "ΤΟ ΗΛΙΚΙΑΚΟ ΠΡΟΦΙΛ ΤΩΝ ΑΡΧΗΓΩΝ";
+                footnoteEl.textContent = "* Η ΚΑΤΑΤΑΞΗ ΕΙΝΑΙ ΑΠΟ ΤΟΝ ΝΕΟΤΕΡΟ ΠΡΟΣ ΤΟΝ ΓΗΡΑΙΟΤΕΡΟ";
+
+                data.sort((a, b) => {
+                    const diff = a.ageData.totalDays - b.ageData.totalDays; // Ascending: youngest first
+                    if (diff !== 0) return diff;
+                    return a.leader.localeCompare(b.leader, 'el');
+                });
+            } else if (currentMode === 'peak') {
+                titleEl.textContent = "ΚΟΡΥΦΑΙΕΣ ΕΠΙΔΟΣΕΙΣ";
+                subTitleEl.textContent = "ΥΨΗΛΟΤΕΡΟ ΕΚΛΟΓΙΚΟ ΠΟΣΟΣΤΟ ΩΣ ΑΡΧΗΓΟΙ";
+                footnoteEl.textContent = "* ΤΑ ΠΟΣΟΣΤΑ ΑΦΟΡΟΥΝ ΤΗΝ ΚΑΛΥΤΕΡΗ ΕΠΙΔΟΣΗ ΤΟΥΣ ΣΕ ΕΘΝΙΚΕΣ Η ΕΥΡΩΠΑΪΚΕΣ ΕΚΛΟΓΕΣ";
+
+                data.sort((a, b) => {
+                    const diff = b.peakScore - a.peakScore;
+                    if (diff !== 0) return diff;
+                    return a.leader.localeCompare(b.leader, 'el');
+                });
+            }
+
+            // Update winner photo and layout panels
+            const winnerImg = document.getElementById('winner-photo');
+            const leftPanel = document.getElementById('cover-panel');
+            const rightPanel = document.querySelector('.right-panel');
+            
+            let newWinnerPhoto = `../data/leaders_photos/${data[0].photo}`;
+            
+            if (currentMode === 'peak') {
+                newWinnerPhoto = `../data/leaders_photos/peak_score_photo.jpg`;
+                winnerImg.style.objectFit = 'cover';
+                winnerImg.style.objectPosition = 'center';
+            } else {
+                winnerImg.style.objectFit = 'cover';
+                winnerImg.style.objectPosition = 'top center';
+            }
+            
+            leftPanel.style.display = 'flex';
+            rightPanel.style.width = '55%';
+            winnerImg.src = newWinnerPhoto;
+            winnerImg.style.display = 'block';
+            document.getElementById('placeholder-cover').style.display = 'none';
+            winnerImg.style.opacity = '1';
+
+            const container = document.getElementById('leaderboard-container');
+            container.innerHTML = '';
+            
+            let prevValue = -1;
+
+            data.forEach((leader, index) => {
+                let val;
+                if (currentMode === 'duration') val = leader.duration.totalDays;
+                else if (currentMode === 'instagram') val = (leader.instagramFollowers || 0);
+                else if (currentMode === 'age') val = leader.ageData.totalDays;
+                else val = leader.peakScore;
+                
+                let displayRank;
+                if (index > 0 && val === prevValue) {
+                    displayRank = "-";
+                } else {
+                    displayRank = index + 1;
+                }
+                prevValue = val;
+
+                const rank = index + 1;
+                
+                let valText = "";
+                let valIcon = "";
+                let linkWrapperStart = "";
+                let linkWrapperEnd = "";
+                
+                if (currentMode === 'duration') {
+                    const formatter = new Intl.NumberFormat('el-GR');
+                    valText = `${formatter.format(leader.duration.totalDays)} ΗΜΕΡΕΣ`;
+                } else if (currentMode === 'instagram') {
+                    let followers = leader.instagramFollowers || 0;
+                    valText = `${followers >= 1000 ? (followers/1000).toFixed(1).replace('.0', '') + 'K' : followers} FOLLOWERS`;
+                    valIcon = `<svg style="width:18px; height:18px; margin-right:6px; vertical-align:text-bottom; color: white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
+                    
+                    if (leader.instagramLink) {
+                        linkWrapperStart = `<a href="${leader.instagramLink}" target="_blank" class="insta-link">`;
+                        linkWrapperEnd = `</a>`;
+                    } else {
+                        valText = "0 FOLLOWERS"; // Ensure clean 0 if no account
+                    }
+                } else if (currentMode === 'age') {
+                    valText = `${leader.ageData.years} ΕΤΩΝ`;
+                    valIcon = "";
+                } else if (currentMode === 'peak') {
+                    valText = `${leader.peakScore.toFixed(2).replace('.', ',')}%`;
+                    valIcon = "";
+                }
+
+                const logoPath = `../data/logos/${leader.party}.png`;
+
+                const row = document.createElement('div');
+                
+                // Use party colors for rank 1
+                if (rank === 1) {
+                    row.className = 'row';
+                    row.style.background = partyColors[leader.party] || 'linear-gradient(90deg, #f43f5e 0%, #be123c 100%)';
+                    row.style.transform = 'scale(1.02)';
+                    row.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+                    row.style.marginBottom = '5px';
+                    row.style.color = 'white';
+                } else {
+                    row.className = `row`; // Removing hardcoded rank-1 class as we handle it inline
+                }
+                
+                row.innerHTML = `
+                    <div class="rank" style="${rank === 1 ? 'color: white;' : ''}">${displayRank}</div>
+                    <div class="logo-container">
+                        <img src="${logoPath}" alt="${leader.party}" class="party-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCI+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iMTUiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4='">
+                    </div>
+                    <div class="name" style="${rank === 1 ? 'color: white;' : ''}">${leader.leader}</div>
+                    <div class="duration" style="${rank === 1 ? 'color: white;' : ''} ${currentMode === 'instagram' ? 'justify-content: flex-start;' : 'justify-content: flex-end;'}">
+                        ${linkWrapperStart}${valIcon}${valText}${linkWrapperEnd}
+                    </div>
+                `;
+                
+                container.appendChild(row);
+            });
+        }
+
+        renderLeaderboard();
+    </script>
+</body>
+</html>
