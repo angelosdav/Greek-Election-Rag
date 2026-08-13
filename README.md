@@ -25,9 +25,9 @@ An advanced web application providing deep political analytics, data visualizati
 The inclusion of political formations in this platform was strictly based on current polling data (July 2026) and realistic political projections:
 
 ![Polls July 2026](media/polls_july_2026.png)
-* **Excluded (< 3% Threshold):** Formations such as **SYRIZA**, **Dimokrates (Δημοκράτες)**, and **Niki (Νίκη)** were deliberately excluded from the dataset. According to recent polls, they fail to pass the 3% electoral threshold required to enter the parliament.
-* **Excluded (Structural Instability):** The party **Elpida (Ελπίδα)** was excluded. This decision was based on their "equidistant" (ισαποστακιστικές) and highly ambiguous proposals, combined with strong political indicators suggesting the formation will likely dissolve before the upcoming elections.
-* **Included (Conditional Momentum):** The party **Ellhnes (Έλληνες - H. Kasidiaris)** was added to the platform. Although its founder is currently imprisoned, there is a realistic probability of his release before the elections. Given their polling momentum, it is highly likely this formation will secure parliamentary representation, thus requiring their programmatic positions to be analyzed and mapped.
+* **Excluded (< 3% Threshold):** Formations such as **SYRIZA**, **Dimokrates**, and **Niki** were deliberately excluded from the dataset. According to recent polls, they fail to pass the 3% electoral threshold required to enter the parliament. Furthermore, there are no political indicators suggesting their percentages will rise; on the contrary, current trends indicate a continuous decline.
+* **Excluded (Structural Instability):** The party **Elpida** was excluded. This decision was based on their "equidistant" and highly ambiguous proposals, combined with strong political indicators suggesting the formation will likely dissolve before the upcoming elections.
+* **Included (Conditional Momentum):** The party **Ellhnes (H. Kasidiaris)** was added to the platform. Although its founder is currently imprisoned, there is a realistic probability of his release before the elections. Given their polling momentum, it is highly likely this formation will secure parliamentary representation, thus requiring their programmatic positions to be analyzed and mapped.
 
 ---
 
