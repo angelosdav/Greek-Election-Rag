@@ -158,8 +158,8 @@ Election-Rag/
    pip install -r requirements.txt
    ```
 
-4. **Environment Variables:**
-   Create a `.env` file in the root directory and add your Google Gemini API key:
+4. **Environment Variables (Optional):**
+   The application will prompt you for your Google Gemini API key directly in the web UI. If you prefer to hardcode it so you don't have to enter it in the UI, you can create a `.env` file in the root directory:
    ```env
    GEMINI_API_KEY="your_api_key_here"
    ```
