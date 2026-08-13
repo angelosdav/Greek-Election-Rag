@@ -622,7 +622,7 @@
         <div class="chat-input-wrapper">
             <div class="welcome-text">Από πού να αρχίσουμε;</div>
             <div class="chat-input-container">
-                <input type="text" id="userInput" name="chat_query_field" placeholder="Ρώτα οτιδήποτε..." autocomplete="new-password" spellcheck="false" data-lpignore="true" data-1p-ignore="true">
+                <input type="text" id="userInput" placeholder="Ρώτα οτιδήποτε..." autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true">
                 <button id="sendBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="19" x2="12" y2="5"></line>
@@ -665,20 +665,11 @@
         
         let currentApiKey = sessionStorage.getItem('geminiApiKey');
         
-        // Load chat history if it exists
-        const savedHistory = sessionStorage.getItem('chatHistory');
         const chatContainer = document.querySelector('.chat-container');
-        if (savedHistory) {
-            chatMessages.innerHTML = savedHistory;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        } else {
-            chatContainer.classList.add('is-empty');
-            chatMessages.innerHTML = '';
-        }
+        chatContainer.classList.add('is-empty');
+        chatMessages.innerHTML = '';
 
-        function saveChatHistory() {
-            sessionStorage.setItem('chatHistory', chatMessages.innerHTML);
-        }
+
         
         // Hide modal if key exists
         if (currentApiKey) {
@@ -812,7 +803,7 @@
             msgDiv.appendChild(contentDiv);
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-            saveChatHistory();
+
         }
 
         async function sendMessage() {
@@ -904,7 +895,7 @@
                 inputField.disabled = false;
                 sendBtn.disabled = false;
                 inputField.focus();
-                saveChatHistory();
+
             }
         }
 
