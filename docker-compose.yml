@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  election-ai:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vector_db:/app/vector_db
+      - ./frontend:/app/frontend
+      - ./backend:/app/backend
+      - ./data:/app/data
+      - ./media:/app/media
+    environment:
+      # We don't necessarily need the API key here since the user inputs it in the UI
+      # but keeping standard env var format
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
